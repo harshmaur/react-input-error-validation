@@ -1,9 +1,34 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-export default React.createClass({
-  render() {
-    return <div>
-      <h2>Welcome to React components</h2>
-    </div>
+const withValidations = BaseComponent => class extends Component {
+  state = {
+    error: ''
   }
-})
+  checkValidations() {
+    for (let i = 0; i < this.props.validations.length; i++) {
+      const value = this.props.validations[i](
+        this.props.value,
+        this.props.config
+      )
+      if (value) {
+        this.setState({
+          error: value
+        })
+        break
+      }
+      this.setState({ error: '' })
+    }
+  }
+
+  render() {
+    return (
+      <BaseComponent
+        {...this.props}
+        {...this.state}
+        onBlur={() => this.checkValidations()}
+      />
+    )
+  }
+}
+
+export default withValidations
