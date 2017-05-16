@@ -1,5 +1,7 @@
 # react-input-error-validation
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/harshmaur/react-input-error-validation.svg)](https://greenkeeper.io/)
+
 [![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
 [![Coveralls][coveralls-badge]][coveralls]
