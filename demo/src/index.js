@@ -2,15 +2,11 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import withValidations from '../../src'
 
-// Text Field Component
-const TextField = ({ onBlur, error, value, onChange }) => (
+// Text Field Component and passing all the
+// props to input field with custom error validation
+const TextField = props => (
   <div>
-    <input
-      type="text"
-      onBlur={onBlur}
-      value={value}
-      onChange={e => onChange(e.target.value)}
-    />
+    <input {...props} />
     {error && <div>{error}</div>}
   </div>
 )
