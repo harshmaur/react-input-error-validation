@@ -14,7 +14,7 @@ const withValidations = BaseComponent => class extends Component {
         break
       }
       this.setState({ error: '' })
-      this.props.onBlur() // run any supplied function when every check passes
+      this.props.onBlur && this.props.onBlur() // run any supplied function when every check passes
     }
   }
 
