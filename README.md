@@ -14,20 +14,10 @@ import React, { Component } from 'react'
 import withValidations from 'react-input-error-validation'
 
 // Create any input field. All props are required
-const TextField = ({ 
-  onBlur, 
-  error,  // For Validations
-  value,  
-  onChange
-  }) => (
+const TextField = props => (
   <div>
-    <input
-      type="text"
-      onBlur={onBlur}
-      value={value}
-      onChange={e => onChange(e.target.value)}
-    />
-    {error && <div>{error}</div>} {/* Display the error, You can customise this. */}
+    <input {...props} />
+    {error && <div>{error}</div>}
   </div>
 )
 
