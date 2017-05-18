@@ -11,10 +11,11 @@ const withValidations = BaseComponent => class extends Component {
         this.setState({
           error: value
         })
-        break
+        return value
       }
       this.setState({ error: '' })
       this.props.onBlur && this.props.onBlur() // run any supplied function when every check passes
+      return ''
     }
   }
 
