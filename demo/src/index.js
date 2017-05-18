@@ -56,7 +56,7 @@ class App extends Component {
         <ValidatedTextField
           inputRef={el => this.el['first'] = el}
           value={this.state.first}
-          onChange={first => this.setState({ first })}
+          onChange={e => this.setState({ first: e.target.value })}
           validations={[notEmpty]}
         />
         <br />
@@ -64,7 +64,7 @@ class App extends Component {
         <ValidatedTextField
           inputRef={el => this.el['second'] = el}
           value={this.state.second}
-          onChange={second => this.setState({ second })}
+          onChange={e => this.setState({ second: e.target.value })}
           validations={[notEmpty, onlyNumber]}
         />
         <br />
@@ -72,7 +72,7 @@ class App extends Component {
         <ValidatedTextField
           inputRef={el => this.el['third'] = el}
           value={this.state.third}
-          onChange={third => this.setState({ third })}
+          onChange={e => this.setState({ third: e.target.value })}
           config={{ digits: 7 }}
           validations={[notEmpty, onlyNumber, fixDigits]}
         />
