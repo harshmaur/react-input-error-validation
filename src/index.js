@@ -19,7 +19,15 @@ const withValidations = BaseComponent => class extends Component {
   }
 
   render() {
-    return <BaseComponent {...this.props} {...this.state} onBlur={() => this.checkValidations()} />
+    return (
+      <BaseComponent
+        ref={this.props.inputRef}
+        {...this.props}
+        {...this.state}
+        checkValidations={() => this.checkValidations()}
+        onBlur={() => this.checkValidations()}
+      />
+    )
   }
 }
 

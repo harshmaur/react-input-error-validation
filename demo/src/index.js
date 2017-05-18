@@ -4,12 +4,17 @@ import withValidations from '../../src'
 
 // Text Field Component and passing all the
 // props to input field with custom error validation
-const TextField = props => (
-  <div>
-    <input {...props} />
-    {error && <div>{error}</div>}
-  </div>
-)
+class TextField extends Component {
+  render() {
+    const { ...rest } = this.props
+    return (
+      <div>
+        <input {...rest} />
+        {rest.error && <div>{rest.error}</div>}
+      </div>
+    )
+  }
+}
 // Applying HOC
 const ValidatedTextField = withValidations(TextField)
 
@@ -37,6 +42,7 @@ const fixDigits = (val, config = {}) => {
 }
 
 class App extends Component {
+  el = {}
   state = {
     first: '',
     second: '',
@@ -48,6 +54,7 @@ class App extends Component {
       <div>
         Must be filled :
         <ValidatedTextField
+          inputRef={el => this.el['first'] = el}
           value={this.state.first}
           onChange={first => this.setState({ first })}
           validations={[notEmpty]}
@@ -55,6 +62,7 @@ class App extends Component {
         <br />
         Should be a number and filled:
         <ValidatedTextField
+          inputRef={el => this.el['second'] = el}
           value={this.state.second}
           onChange={second => this.setState({ second })}
           validations={[notEmpty, onlyNumber]}
@@ -62,12 +70,18 @@ class App extends Component {
         <br />
         Number, 7 digits and filled:
         <ValidatedTextField
+          inputRef={el => this.el['third'] = el}
           value={this.state.third}
           onChange={third => this.setState({ third })}
           config={{ digits: 7 }}
           validations={[notEmpty, onlyNumber, fixDigits]}
         />
         <br />
+        <input
+          type="button"
+          value="submit"
+          onClick={() => Object.keys(this.el).map(newel => this.el[newel].props.checkValidations())}
+        />
       </div>
     )
   }
