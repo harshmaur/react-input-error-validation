@@ -14,12 +14,18 @@ import React, { Component } from 'react'
 import withValidations from 'react-input-error-validation'
 
 // Create any input field. All props are required
-const TextField = props => (
-  <div>
-    <input {...props} />
-    {error && <div>{error}</div>}
-  </div>
-)
+// Class based to support inputRef
+class TextField extends Component {
+  render() {
+    const { inputRef, validations, error, checkValidations, config, ...rest } = this.props
+    return (
+      <div>
+        <input {...rest} />
+        {rest.error && <div>{rest.error}</div>}
+      </div>
+    )
+  }
+}
 
 // Applying HOC
 const ValidatedTextField = withValidations(TextField)
@@ -61,6 +67,7 @@ const fixDigits = (val, config = {}) => {
 // Finally we render it out. 
 
 class App extends Component {
+  el = {}
   state = {
     first: '',
     second: '',
@@ -72,6 +79,7 @@ class App extends Component {
       <div>
         Must be filled :
         <ValidatedTextField
+          inputRef={el => this.el['first'] = el}
           value={this.state.first}
           onChange={first => this.setState({ first })}
           validations={[notEmpty]} // Pass array of functions in the validations prop
@@ -79,6 +87,7 @@ class App extends Component {
         <br />
         Should be a number and filled:
         <ValidatedTextField
+          inputRef={el => this.el['second'] = el}
           value={this.state.second}
           onChange={second => this.setState({ second })}
           validations={[notEmpty, onlyNumber]}
@@ -86,12 +95,18 @@ class App extends Component {
         <br />
         Number, 7 digits and filled:
         <ValidatedTextField
+          inputRef={el => this.el['third'] = el}
           value={this.state.third}
           onChange={third => this.setState({ third })}
           config={{ digits: 7 }} // this is how we pass in config. 
           validations={[notEmpty, onlyNumber, fixDigits]} // you can pass as many validators in squence
         />
         <br />
+        <input
+          type="button"
+          value="submit"
+          onClick={() => Object.keys(this.el).map(newel => this.el[newel].props.checkValidations())}
+        />
       </div>
     )
   }
