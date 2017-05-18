@@ -10,7 +10,7 @@ class TextField extends Component {
     return (
       <div>
         <input {...rest} />
-        {rest.error && <div>{rest.error}</div>}
+        {error && <div>{error}</div>}
       </div>
     )
   }
