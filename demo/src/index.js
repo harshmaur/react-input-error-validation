@@ -6,7 +6,7 @@ import withValidations from '../../src'
 // props to input field with custom error validation
 class TextField extends Component {
   render() {
-    const { ...rest } = this.props
+    const { inputRef, validations, error, checkValidations, config, ...rest } = this.props
     return (
       <div>
         <input {...rest} />
