@@ -4,7 +4,7 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/harshmaur/react-input-error-validation.svg)](https://greenkeeper.io/)
 
 
-A basic input validation HOC to provide error validations around the input. No need for the complete form validation. You can pass in number of validators and do error handling every input wise. 
+A basic input validation HOC to provide error validations around the input. You can pass in number of validators and do error handling every input wise. Hack in to refs to get complete Form Validations.
 
 
 ## Usage

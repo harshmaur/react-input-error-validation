@@ -1,7 +1,7 @@
 {
   "name": "react-input-error-validation",
   "version": "0.3.3",
-  "description": "react-input-error-validation React component",
+  "description": "A basic input validation HOC to provide error validations around the input. You can pass in number of validators and do error handling every input wise. Hack in to refs to get complete Form Validations.",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -27,11 +27,21 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
-  "author": "",
-  "homepage": "",
+  "author": "Harsh Maur",
+  "homepage": "https://github.com/harshmaur/react-input-error-validation",
+  "bugs": {
+    "url": "https://github.com/harshmaur/react-input-error-validation/issues",
+    "email": "harshmaur@gmail.com"
+  },
   "license": "MIT",
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/harshmaur/react-input-error-validation.git"
+  },
   "keywords": [
-    "react-component"
+    "react",
+    "validations",
+    "react-validation",
+    "form-validation"
   ]
 }
