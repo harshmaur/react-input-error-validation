@@ -9,6 +9,8 @@ A basic input validation HOC to provide error validations around the input. You 
 
 ## Usage
 
+Try Running the demo for interative usage
+
 ```jsx
 import React, { Component } from 'react'
 import withValidations from 'react-input-error-validation'
@@ -64,6 +66,29 @@ const fixDigits = (val, config = {}) => {
 }
 
 
+// Utility function to check for complete form errors
+const checkForErrors = el => {
+  let err = false
+  let errField = '' // this will contain the "name" of the "FIRST" field with error.
+
+  Object.keys(el).map(key => {
+    const elItem = el[key]
+    if (elItem && elItem.props.checkValidations() !== '') {
+      err = true
+
+      // So that the next error does not replace the first one.
+      if (!errField) {
+        errField = elItem.props.name
+      }
+    }
+  })
+
+  // Keeping error field is optional and depends on the use case,
+  // there may be a case where you want to take the users to the field where the error occoured.
+  return { err, errField }
+}
+
+
 // Finally we render it out. 
 
 class App extends Component {
@@ -72,6 +97,17 @@ class App extends Component {
     first: '',
     second: '',
     third: ''
+  }
+
+  validateAndDoSomething() {
+    const { err } = checkForErrors(this.el) // passing el
+
+    if (!err) {
+      console.log('There were no errors')
+      // Do Something here....
+    } else {
+      console.log('There were errors')
+    }
   }
 
   render() {
@@ -105,7 +141,7 @@ class App extends Component {
         <input
           type="button"
           value="submit"
-          onClick={() => Object.keys(this.el).map(newel => this.el[newel].props.checkValidations())}
+          onClick={() => this.validateAndDoSomething()}
         />
       </div>
     )
