@@ -1,6 +1,6 @@
 {
   "name": "react-input-error-validation",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "A basic input validation HOC to provide error validations around the input. You can pass in number of validators and do error handling every input wise. Hack in to refs to get complete Form Validations.",
   "main": "lib/index.js",
   "module": "es/index.js",
