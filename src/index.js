@@ -5,6 +5,19 @@ const withValidations = BaseComponent => class extends Component {
     error: ''
   }
   checkValidations() {
+    // To provide debugging
+    if (!this.props.validations) {
+      console.error(
+        `You must supply 'validations' prop to the component ${BaseComponent.displayName || BaseComponent.name}`
+      )
+      return
+    }
+
+    if (!this.props.value) {
+      console.error(`You must supply 'value' prop to the component ${BaseComponent.displayName || BaseComponent.name}`)
+      return
+    }
+
     for (let i = 0; i < this.props.validations.length; i++) {
       const value = this.props.validations[i](this.props.value, this.props.config)
       if (value) {
