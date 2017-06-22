@@ -155,4 +155,4 @@ export default App
 
 ## Contributions
 
-See [`CONTRIBUTING.md`](./CONTRIBUTING.md)
+See [`Contributions`](./CONTRIBUTING.md)
