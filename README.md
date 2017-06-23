@@ -37,9 +37,9 @@ const ValidatedTextField = withValidations(TextField)
 
 
 /*
-Validations - 
-It will take in the value prop from the input field as well and and `config` prop if passed. 
-The config prop can be used to do extra checking like in the case of fixDigits. 
+Validations -
+It will take in the value prop from the input field as well and and `config` prop if passed.
+The config prop can be used to do extra checking like in the case of fixDigits.
 */
 const notEmpty = val => {
   if (!val) {
@@ -57,7 +57,7 @@ const onlyNumber = val => {
 }
 
 
-// You can use config object to check for any custom configurations. 
+// You can use config object to check for any custom configurations.
 const fixDigits = (val, config = {}) => {
   if (val.length !== config.digits) {
     return `Content should be ${config.digits} only`
@@ -89,7 +89,7 @@ const checkForErrors = el => {
 }
 
 
-// Finally we render it out. 
+// Finally we render it out.
 
 class App extends Component {
   el = {}
@@ -134,7 +134,7 @@ class App extends Component {
           inputRef={el => this.el['third'] = el}
           value={this.state.third}
           onChange={third => this.setState({ third })}
-          config={{ digits: 7 }} // this is how we pass in config. 
+          config={{ digits: 7 }} // this is how we pass in config.
           validations={[notEmpty, onlyNumber, fixDigits]} // you can pass as many validators in squence
         />
         <br />
@@ -152,3 +152,7 @@ export default App
 
 
 ```
+
+## Contributions
+
+See [`Contributions`](./CONTRIBUTING.md)
