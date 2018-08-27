@@ -9,7 +9,7 @@ A basic input validation HOC to provide error validations around the input. You 
 
 ## Usage
 
-Try Running the demo for interative usage
+Try Running the demo for interactive usage
 
 ```jsx
 import React, { Component } from 'react'
